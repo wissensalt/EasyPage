@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+>
+    <persistence-unit name="easy_page_pu">
+        <jta-data-source>java:jboss/datasources/easy_page</jta-data-source>
+        <class>com.zisal.easypage.model.EmployeeEntity</class>
+        <class>com.zisal.easypage.model.UserEntity</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="false"/>
+            <property name="hibernate.use_sql_comments" value="false"/>
+            <property name="hibernate.ejb.entitymanager_factory_name=something" value="easy_page"/>
+        </properties>
+    </persistence-unit>
+</persistence>

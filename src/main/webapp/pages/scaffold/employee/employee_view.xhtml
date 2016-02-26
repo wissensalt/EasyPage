@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:view>
+        <h:head>
+            <title>::Employee View::</title>
+        </h:head>
+        <h:body>
+            <h:form>
+                <h:commandButton value="Edit" action="#">
+                    <f:ajax execute="@this" render="output output1" listener="#{scaffoldViewBean.textVisibility(scaffoldViewBean.employeeEntity.id)}" event="click" />
+                </h:commandButton>
+                <h:panelGrid columns="2">
+                    <h:outputText value="Employee Name"/>
+                    <h:inputText id="output" value="#{scaffoldViewBean.employeeEntity.name}" disabled="#{scaffoldViewBean.textEnabled}" />
+                    <h:outputText value="Employee Address"/>
+                    <h:inputText id="output1" value="#{scaffoldViewBean.employeeEntity.address}" disabled="#{scaffoldViewBean.textEnabled}" />
+                </h:panelGrid>
+                <h:panelGrid columns="1">
+                    <h:commandButton value="Update" action="#{scaffoldViewBean.update(scaffoldViewBean.employeeEntity)}" />
+                    <h:commandButton value="View Employee List" action="#{scaffoldViewBean.viewList()}" />
+                </h:panelGrid>
+            </h:form>
+        </h:body>
+    </f:view>
+</ui:composition>

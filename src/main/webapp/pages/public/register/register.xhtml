@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:view>
+        <h:head>
+            <title>::Register::</title>
+        </h:head>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="User Name" />
+                <h:inputText value="#{registerBean.userName}" />
+                <h:outputLabel value="Password" />
+                <h:inputSecret value="#{registerBean.password}" />
+                <h:outputLabel value="Confirm Password" />
+                <h:inputSecret value="#{registerBean.confirmPassword}" />
+            </h:panelGrid>
+            <h:commandButton value="Register" action="#{registerBean.doRegister}" />
+        </h:form>
+    </f:view>
+</ui:composition>

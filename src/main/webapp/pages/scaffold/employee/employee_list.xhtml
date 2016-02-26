@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://java.sun.com/jsf/html">
+    <f:view>
+        <h:head>
+            <title>::Employee::</title>
+            <h:outputStylesheet name="table_style.css"/>
+            <h:outputScript name="js/common.js"/>
+        </h:head>
+        <h:body>
+            <h3><h:outputText value="Manage Employee" /></h3>
+            <h:form>
+                <h:messages style="color: red; font-size: 20px; background-color: aqua;"/>
+                <h:panelGrid columns="2">
+                    <h:outputText value="Employee Name" />
+                    <h:inputText value="#{scaffoldBean.employeeName}" required="true" requiredMessage="Field Name Is Required" />
+                    <h:outputText value="Employee Address" />
+                    <h:inputText value="#{scaffoldBean.employeeAddress}" required="true" requiredMessage="Field Address Is Required" />
+                    <a4j:commandButton value="Add Employee" actionListener="#{scaffoldBean.addEmployee}" execute="@form" render="table" />
+                </h:panelGrid>
+            </h:form>
+            <h:form>
+                <a4j:dataTable id="table" value="#{scaffoldBean.employeeEntities}"
+                             var="employeeList"
+                             styleClass="order-table"
+                             headerClass="order-table-header"
+                             rowClasses="order-table-odd-row, order-table-even-row">
+                    <h:column>
+                        <f:facet name="header">Employee Name</f:facet>
+                        #{employeeList.name}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Employee Address</f:facet>
+                        #{employeeList.address}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Action</f:facet>
+                        <h:panelGrid columns="2">
+                            <h:commandButton value="view" action="#{scaffoldViewBean.view(employeeList.id)}"/>
+                            <a4j:commandButton value="Delete" onclick="return displayAlert(#{employeeList.id})" actionListener="#{scaffoldBean.delete(employeeList.id)}" execute="@this" render="table">
+                            </a4j:commandButton>
+                        </h:panelGrid>
+                    </h:column>
+                </a4j:dataTable>
+            </h:form>
+        </h:body>
+    </f:view>
+</ui:composition>

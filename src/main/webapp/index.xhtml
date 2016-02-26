@@ -1,0 +1,16 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:view>
+        <h:head>
+            <title>::index::</title>
+        </h:head>
+        <h:body>
+            <h:form>
+                <h:inputText value="#{helloBean.name}" />
+                <h:commandButton value="Welcome me" action="#{helloBean.welcome}" />
+            </h:form>
+        </h:body>
+    </f:view>
+</ui:composition>
